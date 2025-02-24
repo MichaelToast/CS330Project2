@@ -14,12 +14,12 @@ public abstract class MiddleEarthCharacter {
 		this.health = health;
 		this.power = power;
 	}
-	
+		
 	public void displayInfo() {
 		System.out.println("NAME: " + name + ", HEALTH: " + health + ", POWER: " + power);
 	}
 	
-
+	// Ask if we are allowed these
 	public String getName() {
 		return name;
 	}
@@ -31,21 +31,15 @@ public abstract class MiddleEarthCharacter {
 	}
 	public void setHealth(double health) {
 		this.health = health;
+		if (this.health < 0) {
+			this.health = 0;
+		}
 	}
 	public double getPower() {
 		return power;
 	}
 	public void setPower(double power) {
 		this.power = power;
-	}
-	
-	// ASK IF THIS IS OK
-	protected void takeDamage(double damageTaken) {
-		health = health - damageTaken;
-		if (health < 0) {
-			health = 0;
-		}
-		
 	}
 	
 

@@ -8,11 +8,12 @@ public class Wizard extends MiddleEarthCharacter{
 
 	@Override
 	/**
-	 * Remove health from target if against valid type
+	 * Removes health from target, if against a valid type. Attack fails if against same type or Human, extra damage against a Dwarf
 	 * @param target Character to attack
 	 * @return boolean detailing weather the attack failed or not 
 	 * */
 	boolean attack(MiddleEarthCharacter target) {
+		double damageTaken = this.getPower();
 		if (target.getRace().equals(this.getRace())) {
 			// Ineffective against same type as self 
 			return false;
@@ -22,11 +23,9 @@ public class Wizard extends MiddleEarthCharacter{
 			return false;
 		}
 		else if (target.getRace().equals("Dwarf")) {
-			target.takeDamage(this.getPower() * 1.5);
-			return true;
+			damageTaken = this.getPower() * 1.5;
 		}
-		
-		target.takeDamage(this.getPower());
+		target.setHealth(target.getHealth() - damageTaken);
 		return true;
 	}
 
