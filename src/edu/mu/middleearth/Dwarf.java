@@ -29,7 +29,6 @@ public class Dwarf extends MiddleEarthCharacter{
 		target.setHealth(target.getHealth() - damageTaken);
 		return true;
 	}
-
 	@Override
 	String getRace() {
 		return "Dwarf";
