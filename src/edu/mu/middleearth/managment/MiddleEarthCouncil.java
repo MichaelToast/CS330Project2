@@ -7,7 +7,7 @@ public class MiddleEarthCouncil {
 	CharacterManager charManager;
 	
 	private MiddleEarthCouncil() {
-		// prevented from being invoked from the outside
+		charManager = new CharacterManager();
 	}
 	
 	public static MiddleEarthCouncil getInstance() {
@@ -17,7 +17,7 @@ public class MiddleEarthCouncil {
 		return instance; 
 	}
 	
-	CharacterManager getCharacterManager() {
+	public CharacterManager getCharacterManager() {
 		return this.charManager;
 	}
 }
