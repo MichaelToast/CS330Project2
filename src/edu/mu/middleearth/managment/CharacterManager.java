@@ -5,21 +5,55 @@ import edu.mu.middleearth.MiddleEarthCharacter;
 public class CharacterManager {
 	private MiddleEarthCharacter[] characters; 
 	private int size;
+	private int arrayCap;
+	
+	public CharacterManager() {
+		this.characters = new MiddleEarthCharacter[arrayCap];
+		this.size = 0;
+		this.arrayCap = 20;
+	}
 	
 	boolean addCharacter(MiddleEarthCharacter c) {
-		// Add character
-		return false; 
+		if (c == null) {
+			return false;
+		}
+		if(size >= arrayCap) {
+			resizeArray();
+		}
+		characters[size++] = c;
+		return true;
 	}
 	
 	MiddleEarthCharacter getCharacter(String name) {
-		// Return character
+		for(int i = 0; i < size; i++) {
+			if(characters[i].getName().equals(name)) {
+				return characters[i];
+			}
+		}
 		return null;
 	}
 	
-	boolean updateCharacter (MiddleEarthCharacter character, String
-			name, int health, int power) {
-		// Find character, update info
-		return false; 
+	boolean updateCharacter (MiddleEarthCharacter character, String name, int health, int power) {
+		if (character == null) {
+			return false;
+		}
+		boolean updateStatus = false;
+		
+		if(!character.getName().equals(name)) {
+			character.setName(name);
+			updateStatus = true;
+		}
+		
+		if(character.getHealth() != health) {
+			character.setHealth(health);
+			updateStatus = true;
+		}
+		
+		if(character.getPower() != power) {
+			character.setPower(power);
+			updateStatus = true;
+		}
+		return updateStatus;
 	}
 	
 	boolean deleteCharacter(MiddleEarthCharacter character) {
@@ -52,7 +86,18 @@ public class CharacterManager {
 	}
 	
 	void displayAllCharacters() {
-		// Display all characters
+		if(size == 0) {
+			return;
+		}
+		for(int i = 0; i < size; i++) {
+			characters[i].displayInfo();
+		}
 	}
 	
+	private void resizeArray() {
+		arrayCap *= 2;
+		MiddleEarthCharacter[] moreCharacters = new MiddleEarthCharacter[arrayCap];
+		System.arraycopy(characters, 0, moreCharacters, 0, size);
+		characters = moreCharacters;
+	}
 }
