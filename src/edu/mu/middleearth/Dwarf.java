@@ -14,18 +14,12 @@ public class Dwarf extends MiddleEarthCharacter{
 	 * @return boolean detailing weather the attack failed or not 
 	 * */
 	boolean attack(MiddleEarthCharacter target) {
-		double damageTaken = this.getPower();
-		if (target.getRace().equals(this.getRace())) {
-			// Ineffective against same type as self 
+		if (target.getRace().equals(this.getRace()) || target.getRace().equals("Wizard")) {
+			// Ineffective against same type as self and wizard
 			return false;
 		}
-		else if (target.getRace().equals("Wizard")) {
-			// Ineffective against Wizard 
-			return false;
-		}
-		else if (target.getRace().equals("Elf")) {
-			damageTaken = this.getPower() * 1.5;
-		}
+		
+		double damageTaken = target.getRace().equals("Elf") ? this.getPower() * 1.5 : this.getPower();
 		target.setHealth(target.getHealth() - damageTaken);
 		return true;
 	}
