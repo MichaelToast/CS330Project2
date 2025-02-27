@@ -9,7 +9,6 @@ public abstract class MiddleEarthCharacter {
 	abstract String getRace();
 	
 	public MiddleEarthCharacter(String name, double health, double power) {
-		super();
 		this.name = name;
 		this.health = health;
 		this.power = power;
