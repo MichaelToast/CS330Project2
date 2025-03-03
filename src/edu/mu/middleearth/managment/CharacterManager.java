@@ -7,12 +7,21 @@ public class CharacterManager {
 	private int size;
 	private int arrayCap;
 	
+	/**
+     * Constructs a new CharacterManager with an initial capacity of 20 characters.
+     */
 	public CharacterManager() {
 		this.characters = new MiddleEarthCharacter[arrayCap];
 		this.size = 0;
 		this.arrayCap = 20;
 	}
-	
+	/**
+     * Adds a new MiddleEarthCharacter to the array. If the array is full, it automatically resizes
+     * the array to accommodate more characters.
+     *
+     * @param c The MiddleEarthCharacter to add.
+     * @return true if the character was added successfully, false if the character is null.
+     */
 	boolean addCharacter(MiddleEarthCharacter c) {
 		if (c == null) {
 			return false;
@@ -23,8 +32,13 @@ public class CharacterManager {
 		characters[size++] = c;
 		return true;
 	}
-	
-	MiddleEarthCharacter getCharacter(String name) {
+	/**
+     * Retrieves a MiddleEarthCharacter from the array by its name.
+     *
+     * @param name The name of the character to retrieve.
+     * @return The MiddleEarthCharacter with the specified name, or null if not found.
+     */
+	public MiddleEarthCharacter getCharacter(String name) {
 		for(int i = 0; i < size; i++) {
 			if(characters[i].getName().equals(name)) {
 				return characters[i];
@@ -32,7 +46,15 @@ public class CharacterManager {
 		}
 		return null;
 	}
-	
+	/**
+     * Updates the attributes (name, health, and power) of a MiddleEarthCharacter.
+     *
+     * @param character The character to update.
+     * @param name      The new name for the character.
+     * @param health    The new health value for the character.
+     * @param power     The new power value for the character.
+     * @return true if any attribute was updated, false if the character is null or no changes were made.
+     */
 	boolean updateCharacter (MiddleEarthCharacter character, String name, int health, int power) {
 		if (character == null) {
 			return false;
@@ -55,12 +77,16 @@ public class CharacterManager {
 		}
 		return updateStatus;
 	}
-	
+	/**
+     * Deletes a MiddleEarthCharacter from the array.
+     *
+     * @param character The character to delete.
+     * @return true if the character was deleted successfully, false if the character is null or not found.
+     */
 	boolean deleteCharacter(MiddleEarthCharacter character) {
 		if (character == null) {
 			return false;
 		}
-		// Finds character in the array
 		int index = -1;
 		for (int i = 0; i < size; i++) {
 			if (characters[i].equals(character)) {
@@ -68,23 +94,21 @@ public class CharacterManager {
 				break;
 			}
 		}
-		// Character not found, no action taken
 		if (index == -1) {
 			return false;
 		}
 		
-		// Shifts elements after the character to the left
 		for (int i = index; i < size - 1; i++) {
 			characters[i] = characters[i + 1];
 		}
-		
-		// Ensures no duplicates after an element is deleted
 		characters[size - 1] = null;
 		size--;
 		
 		return true;
 	}
-	
+	/**
+     * Displays information for all characters in the array.
+     */
 	void displayAllCharacters() {
 		if(size == 0) {
 			return;
@@ -93,7 +117,10 @@ public class CharacterManager {
 			characters[i].displayInfo();
 		}
 	}
-	
+	/**
+     * Resizes the internal array to double its current capacity.
+     * Called automatically when the array is full.
+     */
 	private void resizeArray() {
 		arrayCap *= 2;
 		MiddleEarthCharacter[] moreCharacters = new MiddleEarthCharacter[arrayCap];

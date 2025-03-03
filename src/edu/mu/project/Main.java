@@ -38,7 +38,9 @@ public class Main {
         
         scanner.close();
     }
-	
+	/**
+     * Displays the main menu of the application, listing all available options for the user.
+     */
 	private static void displayMenu() {
         System.out.println("\n=== Middle Earth Character Manager ===");
         System.out.println("1. Add a new character");
@@ -49,7 +51,12 @@ public class Main {
         System.out.println("6. Exit");
         System.out.print("Enter your choice: ");
     }
-	
+	/**
+     * Prompts the user to enter a choice from the menu and returns the selected option.
+     * If the input is not a valid integer, it returns -1 to indicate an invalid choice.
+     *
+     * @return The user's choice as an integer, or -1 if the input is invalid.
+     */
 	private static int getChoice() {
 		try {
 			return Integer.parseInt(scanner.nextLine());
@@ -58,7 +65,10 @@ public class Main {
 		}
 	}
 	
-	
+	/**
+     * Prompts the user to input details for a new character and adds the character
+     * to the character manager if the input is valid.
+     */
 	private static void addCharacter() {
 		System.out.println("\n--- Add a New Character ---");
 		
@@ -81,6 +91,11 @@ public class Main {
 		}
 	}
 	
+	/**
+     * Prompts the user to input the name of a character to update and allows the user
+     * to modify the character's name, health points, and power. If no changes are made,
+     * the character remains unchanged.
+     */
 	private static void updateCharacter() {
 		System.out.println("\n--- Update a Character ---");
 		
@@ -125,7 +140,10 @@ public class Main {
 			System.out.println("No changes were made.")
 		}
 	}
-	
+	/**
+     * Prompts the user to input the name of a character to delete and removes the character
+     * from the character manager if found.
+     */
 	private static void deleteCharacter() {
 		System.out.println("\n--- Delete a Character ---");
 		
@@ -146,6 +164,7 @@ public class Main {
 		} else {
 			System.out.println("Failed to delete character.");
 		}
+		
 		
 		private static void executeAttacks() {
 			System.out.println("\n--- Character Attacks ---");
