@@ -67,6 +67,15 @@ public class Main {
 			return -1;
 		}
 	}
+	/**
+	 * Displays a list of all characters currently managed by the CharacterManager.
+	 * This method prints a header and then calls the displayAllCharacters method
+	 * to display the details of each character.
+	 */
+	private static void viewAllCharacters() {
+        System.out.println("\n=== All Characters ===");
+        CharacterManager.displayAllCharacters();
+    }
 	
 	/**
      * Prompts the user to input details for a new character and adds the character
@@ -113,7 +122,7 @@ public class Main {
 		}
 		
 		System.out.println("Updating Character: " + character.getName());
-		System.out.println("Leave field blank to keep current value")
+		System.out.println("Leave field blank to keep current value");
 		
 		System.out.print("Enter new name (" + Character.getName() + "): ");
 		String newName = scanner.nextLine();
@@ -140,7 +149,7 @@ public class Main {
 		if (updated) {
 			System.out.println("Character updated successfully!");
 		} else {
-			System.out.println("No changes were made.")
+			System.out.println("No changes were made.");
 		}
 	}
 	/**
