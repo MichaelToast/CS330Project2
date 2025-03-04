@@ -141,7 +141,7 @@ public class Main {
 		
 		System.out.print("Enter new power (" + character.getPower() + "): ");
 		String powerStr = scanner.nextLine();
-		double newPower = character.getHealth();
+		double newPower = character.getPower();
 		if (!powerStr.isEmpty()) {
 			newPower = Double.parseDouble(powerStr);
 		}
