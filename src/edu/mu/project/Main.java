@@ -2,9 +2,11 @@ package edu.mu.project;
 
 import edu.mu.middleearth.MiddleEarthCharacter;
 import edu.mu.middleearth.managment.CharacterManager;
+import java.util.Scanner;
 
 public class Main {
-
+	private static Scanner scanner = new Scanner(System.in);
+	
 	public static void main(String[] args) {
 		boolean running = true;
         
@@ -93,7 +95,7 @@ public class Main {
 		System.out.print("Enter character power: ");
 		double power = Double.parseDouble(scanner.nextLine());
 		
-		MiddleEarthCharacter newCharacter = new MiddleEarthCharacter(name, helth, power);
+		MiddleEarthCharacter newCharacter = new MiddleEarthCharacter(name, health, power);
 		boolean added = CharacterManager.addCharacter(newCharacter);
 		
 		if (added) {
@@ -112,7 +114,7 @@ public class Main {
 		System.out.println("\n--- Update a Character ---");
 		
 		System.out.print("Enter the name of the character to update: ");
-		string name = scanner.nextLine();
+		String name = scanner.nextLine();
 		
 		MiddleEarthCharacter character = CharacterManager.getCharacter(name);
 		
@@ -124,24 +126,24 @@ public class Main {
 		System.out.println("Updating Character: " + character.getName());
 		System.out.println("Leave field blank to keep current value");
 		
-		System.out.print("Enter new name (" + Character.getName() + "): ");
+		System.out.print("Enter new name (" + character.getName() + "): ");
 		String newName = scanner.nextLine();
 		if (newName.isEmpty()) {
 			newName = character.getName();
 		}
 		
 		System.out.print("Enter new health points (" + character.getHealth() + "): ");
-		string healthStr = scanner.nextLine();
+		String healthStr = scanner.nextLine();
 		double newHealth = character.getHealth();
 		if (!healthStr.isEmpty()) {
-			newHealth = Integer.parseInt(healthStr);
+			newHealth = Double.parseDouble(healthStr);
 		}
 		
 		System.out.print("Enter new power (" + character.getPower() + "): ");
-		string powerStr = scanner.nextLine();
+		String powerStr = scanner.nextLine();
 		double newPower = character.getHealth();
 		if (!powerStr.isEmpty()) {
-			newPower = parseDouble(powerStr);
+			newPower = Double.parseDouble(powerStr);
 		}
 		
 		boolean updated = CharacterManager.updateCharacter(character, newName, newHealth, newPower);
@@ -160,7 +162,7 @@ public class Main {
 		System.out.println("\n--- Delete a Character ---");
 		
 		System.out.print("Enter the name of the character to delete: ");
-		string name = scanner.nextLine();
+		String name = scanner.nextLine();
 		
 		MiddleEarthCharacter character = CharacterManager.getCharacter(name);
 		
@@ -176,6 +178,7 @@ public class Main {
 		} else {
 			System.out.println("Failed to delete character.");
 		}
+	}
 		
 		
 		private static void executeAttacks() {
