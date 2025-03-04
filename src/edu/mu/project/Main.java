@@ -2,12 +2,16 @@ package edu.mu.project;
 
 import edu.mu.middleearth.MiddleEarthCharacter;
 import edu.mu.middleearth.managment.CharacterManager;
+import edu.mu.middleearth.managment.MiddleEarthCouncil;
 import java.util.Scanner;
 
 public class Main {
 	private static Scanner scanner = new Scanner(System.in);
+	private static CharacterManager characterManager;
 	
 	public static void main(String[] args) {
+		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
+		characterManager = council.getCharacterManager();
 		boolean running = true;
         
         System.out.println("Welcome to Middle Earth Character Manager!");
@@ -96,7 +100,7 @@ public class Main {
 		double power = Double.parseDouble(scanner.nextLine());
 		
 		MiddleEarthCharacter newCharacter = new MiddleEarthCharacter(name, health, power);
-		boolean added = CharacterManager.addCharacter(newCharacter);
+		boolean added = characterManager.addCharacter(newCharacter);
 		
 		if (added) {
 			System.out.println("Character added successfully!");
@@ -116,7 +120,7 @@ public class Main {
 		System.out.print("Enter the name of the character to update: ");
 		String name = scanner.nextLine();
 		
-		MiddleEarthCharacter character = CharacterManager.getCharacter(name);
+		MiddleEarthCharacter character = characterManager.getCharacter(name);
 		
 		if (character == null) {
 			System.out.println("Character not found.");
@@ -164,14 +168,14 @@ public class Main {
 		System.out.print("Enter the name of the character to delete: ");
 		String name = scanner.nextLine();
 		
-		MiddleEarthCharacter character = CharacterManager.getCharacter(name);
+		MiddleEarthCharacter character = characterManager.getCharacter(name);
 		
 		if (character == null) {
 			System.out.println("Character not found.");
 			return;
 		}
 		
-		boolean deleted = CharacterManager.deleteCharacter(character);
+		boolean deleted = characterManager.deleteCharacter(character);
 		
 		if (deleted) {
 			System.out.println("Character " + character.getName() + " has been deleted.");
@@ -181,11 +185,10 @@ public class Main {
 	}
 		
 		
-		private static void executeAttacks() {
-			System.out.println("\n--- Character Attacks ---");
-			for (int i = 0; i < CharacterManager.size; i++) {
-				CharacterManager.characters[i].attack();
-			}
+	private static void executeAttacks() {
+		System.out.println("\n--- Character Attacks ---");
+		for (int i = 0; i < CharacterManager.size; i++) {
+			CharacterManager.characters[i].attack();
 		}
 	}
 }
