@@ -1,5 +1,8 @@
 package edu.mu.project;
 
+import edu.mu.middleearth.MiddleEarthCharacter;
+import edu.mu.middleearth.managment.CharacterManager;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -120,16 +123,16 @@ public class Main {
 		
 		System.out.print("Enter new health points (" + character.getHealth() + "): ");
 		string healthStr = scanner.nextLine();
-		int newHealth = character.getHealth();
+		double newHealth = character.getHealth();
 		if (!healthStr.isEmpty()) {
 			newHealth = Integer.parseInt(healthStr);
 		}
 		
 		System.out.print("Enter new power (" + character.getPower() + "): ");
-		string powerhStr = scanner.nextLine();
-		int newPower = character.getHealth();
+		string powerStr = scanner.nextLine();
+		double newPower = character.getHealth();
 		if (!powerStr.isEmpty()) {
-			newPower = Integer.parseInt(powerStr);
+			newPower = parseDouble(powerStr);
 		}
 		
 		boolean updated = CharacterManager.updateCharacter(character, newName, newHealth, newPower);
