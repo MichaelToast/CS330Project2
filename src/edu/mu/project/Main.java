@@ -1,6 +1,10 @@
 package edu.mu.project;
 
+import edu.mu.middleearth.Dwarf;
+import edu.mu.middleearth.Elf;
+import edu.mu.middleearth.Human;
 import edu.mu.middleearth.MiddleEarthCharacter;
+import edu.mu.middleearth.Orc;
 import edu.mu.middleearth.managment.CharacterManager;
 import edu.mu.middleearth.managment.MiddleEarthCouncil;
 import java.util.Scanner;
@@ -25,10 +29,10 @@ public class Main {
                     addCharacter();
                     break;
                 case 2:
-                    viewAllCharacters();
+                    viewAllCharacters(characterManager);
                     break;
                 case 3:
-                    updateCharacter();
+                    //updateCharacter();
                     break;
                 case 4:
                     deleteCharacter();
@@ -78,9 +82,9 @@ public class Main {
 	 * This method prints a header and then calls the displayAllCharacters method
 	 * to display the details of each character.
 	 */
-	private static void viewAllCharacters() {
+	private static void viewAllCharacters(CharacterManager manager) {
         System.out.println("\n=== All Characters ===");
-        CharacterManager.displayAllCharacters();
+        manager.displayAllCharacters();
     }
 	
 	/**
@@ -89,6 +93,8 @@ public class Main {
      */
 	private static void addCharacter() {
 		System.out.println("\n--- Add a New Character ---");
+		MiddleEarthCharacter newCharacter = null;
+			
 		
 		System.out.print("Enter Character name: ");
 		String name = scanner.nextLine();
@@ -99,7 +105,24 @@ public class Main {
 		System.out.print("Enter character power: ");
 		double power = Double.parseDouble(scanner.nextLine());
 		
-		MiddleEarthCharacter newCharacter = new MiddleEarthCharacter(name, health, power);
+		System.out.print("Enter Character Type (Dwarf, Elf, Human, Orc, Wizard): ");
+		String type = scanner.nextLine();
+		if (type.equals("Dwarf")) {
+			newCharacter = new Dwarf(name, health, power);
+		}
+		else if (type.equals("Elf")) {
+			newCharacter = new Elf(name, health, power);
+		}
+		else if (type.equals("Human")) {
+			newCharacter = new Human(name, health, power);
+		}
+		else if (type.equals("Orc")) {
+			newCharacter = new Orc(name, health, power);
+		}
+		else {
+			System.out.println("Invalid Type");
+		}
+		
 		boolean added = characterManager.addCharacter(newCharacter);
 		
 		if (added) {

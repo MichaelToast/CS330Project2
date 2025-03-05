@@ -22,7 +22,7 @@ public class CharacterManager {
      * @param c The MiddleEarthCharacter to add.
      * @return true if the character was added successfully, false if the character is null.
      */
-	boolean addCharacter(MiddleEarthCharacter c) {
+	public boolean addCharacter(MiddleEarthCharacter c) {
 		if (c == null) {
 			return false;
 		}
@@ -109,7 +109,7 @@ public class CharacterManager {
 	/**
      * Displays information for all characters in the array.
      */
-	void displayAllCharacters() {
+	public void displayAllCharacters() {
 		if(size == 0) {
 			return;
 		}
