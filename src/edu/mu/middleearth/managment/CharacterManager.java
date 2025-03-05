@@ -11,9 +11,9 @@ public class CharacterManager {
      * Constructs a new CharacterManager with an initial capacity of 20 characters.
      */
 	public CharacterManager() {
+		this.arrayCap = 20;
 		this.characters = new MiddleEarthCharacter[arrayCap];
 		this.size = 0;
-		this.arrayCap = 20;
 	}
 	/**
      * Adds a new MiddleEarthCharacter to the array. If the array is full, it automatically resizes
