@@ -5,6 +5,7 @@ import edu.mu.middleearth.Elf;
 import edu.mu.middleearth.Human;
 import edu.mu.middleearth.MiddleEarthCharacter;
 import edu.mu.middleearth.Orc;
+import edu.mu.middleearth.Wizard;
 import edu.mu.middleearth.managment.CharacterManager;
 import edu.mu.middleearth.managment.MiddleEarthCouncil;
 import java.util.Scanner;
@@ -32,7 +33,7 @@ public class Main {
                     viewAllCharacters(characterManager);
                     break;
                 case 3:
-                    //updateCharacter();
+                    updateCharacter();
                     break;
                 case 4:
                     deleteCharacter();
@@ -209,9 +210,15 @@ public class Main {
 		
 		
 	private static void executeAttacks(CharacterManager characterManager) {
-		System.out.println("\n--- Character Attacks ---");
-		for (int i = 0; i < characterManager.getSize(); i++) {
-			characterManager.getCharacter(i).attack();
-		}
+		System.out.print("Enter the name of the character you want to USE to attack: ");
+		String attackerName = scanner.nextLine();
+		MiddleEarthCharacter attacker = characterManager.getCharacter(attackerName);
+		
+		System.out.print("Enter the name of the character you want to attack: ");
+		String victimName = scanner.nextLine();
+		MiddleEarthCharacter victim = characterManager.getCharacter(victimName);
+		
+		// ((Wizard)attacker).attack(victim); // This works, we just need to figure out how to properly typecast
+	
 	}
 }

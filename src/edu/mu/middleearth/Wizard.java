@@ -12,7 +12,7 @@ public class Wizard extends MiddleEarthCharacter{
 	 * @param target Character to attack
 	 * @return boolean detailing weather the attack failed or not 
 	 * */
-	boolean attack(MiddleEarthCharacter target) {
+	public boolean attack(MiddleEarthCharacter target) {
 		if (target.getRace().equals(this.getRace()) || target.getRace().equals("Human")) {
 			// Ineffective against same type as self and human
 			return false;

@@ -13,7 +13,7 @@ public class Orc extends MiddleEarthCharacter{
 	 * @param target Character to attack
 	 * @return boolean detailing weather the attack failed or not 
 	 * */
-	boolean attack(MiddleEarthCharacter target) {
+	public boolean attack(MiddleEarthCharacter target) {
 		if (target.getRace().equals(this.getRace()) || target.getRace().equals("Elf")) {
 			// Ineffective against same type as self and elf
 			return false;
