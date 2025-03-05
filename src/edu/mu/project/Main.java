@@ -38,7 +38,7 @@ public class Main {
                     deleteCharacter();
                     break;
                 case 5:
-                    executeAttacks();
+                    executeAttacks(characterManager);
                     break;
                 case 6:
                     running = false;
@@ -173,7 +173,7 @@ public class Main {
 			newPower = Double.parseDouble(powerStr);
 		}
 		
-		boolean updated = CharacterManager.updateCharacter(character, newName, newHealth, newPower);
+		boolean updated = characterManager.updateCharacter(character, newName, newHealth, newPower);
 		
 		if (updated) {
 			System.out.println("Character updated successfully!");
@@ -208,10 +208,10 @@ public class Main {
 	}
 		
 		
-	private static void executeAttacks() {
+	private static void executeAttacks(CharacterManager characterManager) {
 		System.out.println("\n--- Character Attacks ---");
-		for (int i = 0; i < CharacterManager.size; i++) {
-			CharacterManager.characters[i].attack();
+		for (int i = 0; i < characterManager.getSize(); i++) {
+			characterManager.getCharacter(i).attack();
 		}
 	}
 }

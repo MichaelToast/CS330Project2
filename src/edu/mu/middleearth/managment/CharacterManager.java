@@ -83,7 +83,7 @@ public class CharacterManager {
      * @param character The character to delete.
      * @return true if the character was deleted successfully, false if the character is null or not found.
      */
-	boolean deleteCharacter(MiddleEarthCharacter character) {
+	public boolean deleteCharacter(MiddleEarthCharacter character) {
 		if (character == null) {
 			return false;
 		}
@@ -127,4 +127,20 @@ public class CharacterManager {
 		System.arraycopy(characters, 0, moreCharacters, 0, size);
 		characters = moreCharacters;
 	}
+	
+	/**
+	 * Get the size of the character manager, seeing how much it holds
+	 * */
+	public int getSize() {
+		return size;
+	}
+	
+	public MiddleEarthCharacter getCharacter(int index) {
+		if (index >= this.size || index < 0) {
+			return null;
+		} 
+		return characters[index];
+		
+	}
+	
 }
