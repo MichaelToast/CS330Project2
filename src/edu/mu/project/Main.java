@@ -218,7 +218,7 @@ public class Main {
 		String victimName = scanner.nextLine();
 		MiddleEarthCharacter victim = characterManager.getCharacter(victimName);
 		
-		// ((Wizard)attacker).attack(victim); // This works, we just need to figure out how to properly typecast
+		(attacker).attack(victim); 
 	
 	}
 }
