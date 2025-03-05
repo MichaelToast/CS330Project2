@@ -120,8 +120,8 @@ public class Main {
 		else if (type.equals("Orc")) {
 			newCharacter = new Orc(name, health, power);
 		}
-		else if (type.equals("Orc")) {
-			newCharacter = new Orc(name, health, power);
+		else if (type.equals("Wizard")) {
+			newCharacter = new Wizard(name, health, power);
 		}
 		else {
 			System.out.println("Invalid Type");
