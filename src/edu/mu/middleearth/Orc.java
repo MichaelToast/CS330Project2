@@ -25,7 +25,7 @@ public class Orc extends MiddleEarthCharacter{
 	}
 
 	@Override
-	String getRace() {
+	public String getRace() {
 		return "Orc";
 	}
 

@@ -24,7 +24,7 @@ public class Wizard extends MiddleEarthCharacter{
 	}
 
 	@Override
-	String getRace() {
+	public String getRace() {
 		return "Wizard";
 	}
 

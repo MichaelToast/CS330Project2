@@ -13,7 +13,7 @@ public class Human extends MiddleEarthCharacter{
 	 * @param target Character to attack
 	 * @return boolean detailing weather the attack failed or not 
 	 * */
-	boolean attack(MiddleEarthCharacter target) {
+	public boolean attack(MiddleEarthCharacter target) {
 		if (target.getRace().equals(this.getRace()) || target.getRace().equals("Orc")) {
 			// Ineffective against same type as self and orc
 			return false;
@@ -25,7 +25,7 @@ public class Human extends MiddleEarthCharacter{
 	}
 
 	@Override
-	String getRace() {
+	public String getRace() {
 		return "Human";
 	}
 

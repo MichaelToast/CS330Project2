@@ -5,8 +5,8 @@ public abstract class MiddleEarthCharacter {
 	private double health;
 	private double power;
 	
-	abstract boolean attack(MiddleEarthCharacter target);
-	abstract String getRace();
+	public abstract boolean attack(MiddleEarthCharacter target);
+	public abstract String getRace();
 	
 	
 	/**
