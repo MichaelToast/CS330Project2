@@ -55,7 +55,7 @@ public class CharacterManager {
      * @param power     The new power value for the character.
      * @return true if any attribute was updated, false if the character is null or no changes were made.
      */
-	boolean updateCharacter (MiddleEarthCharacter character, String name, int health, int power) {
+	public boolean updateCharacter (MiddleEarthCharacter character, String name, double health, double power) {
 		if (character == null) {
 			return false;
 		}
